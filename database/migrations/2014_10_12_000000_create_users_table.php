@@ -35,6 +35,7 @@ return new class extends Migration
             $table->string('device_id')->nullable();
             $table->string('device_type')->nullable();
             $table->string('device_token')->nullable();
+            $table->string('device_name')->nullable();
             $table->timestamps();
         });
 
