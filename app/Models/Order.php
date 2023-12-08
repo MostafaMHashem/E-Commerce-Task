@@ -5,11 +5,11 @@ namespace App\Models;
 use Illuminate\Database\Eloquent\Factories\HasFactory;
 use Illuminate\Database\Eloquent\Model;
 
-class Product extends Model
+class Order extends Model
 {
     use HasFactory;
 
-    protected $table = 'products';
+    protected $table = 'orders';
 
     protected $guarded = [];
 
@@ -17,7 +17,7 @@ class Product extends Model
         return $this->hasMany(Cart::class);
     }
 
-    public function orders(){
-        return $this->belongsToMany(Order::class, 'carts', 'product_id', 'order_id');
+    public function products(){
+        return $this->belongsToMany(Product::class, 'carts', 'order_id', 'product_id');
     }
 }
