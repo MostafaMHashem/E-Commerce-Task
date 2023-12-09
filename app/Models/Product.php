@@ -2,6 +2,7 @@
 
 namespace App\Models;
 
+use Database\Factories\ProductFactory;
 use Illuminate\Database\Eloquent\Factories\HasFactory;
 use Illuminate\Database\Eloquent\Model;
 
@@ -13,6 +14,11 @@ class Product extends Model
 
     protected $guarded = [];
 
+
+    protected static function newFactory(): ProductFactory
+    {
+        return ProductFactory::new();
+    }
     public function carts(){
         return $this->hasMany(Cart::class);
     }

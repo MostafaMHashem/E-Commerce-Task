@@ -3,9 +3,10 @@
 namespace App\Http\Requests\Api;
 
 use Illuminate\Foundation\Http\FormRequest;
+use Illuminate\Validation\Rules\Password;
 use Illuminate\Validation\Rule;
 
-class SignUpApiRequest extends ApiMasterRequest
+class SignUPApiRequest extends ApiMasterRequest
 {
     /**
      * Determine if the user is authorized to make this request.
@@ -23,18 +24,34 @@ class SignUpApiRequest extends ApiMasterRequest
     public function rules(): array
     {
         $validator = [];
+
+        $validator['name'] = [
+            'required',
+            'string',
+
+        ];
+
         $validator['email'] = [
             'nullable',
             'email',
+            "unique:users,email",
         ];
 
         $validator['phone'] = [
             'nullable',
             'string',
+            'min:11',
+            "unique:users,phone",
             Rule::requiredIf(function () {
                 return $this->get('email') == null;
             })
         ];
+
+        $validator['password'] = [
+            'required',
+            Password::defaults(),
+        ];
+
         return $validator;
     }
 }

@@ -1,20 +1,15 @@
 <?php
 
-namespace App\Models\User;
+namespace App\Models;
 
-// use Illuminate\Contracts\Auth\MustVerifyEmail;
 
-use App\Models\Cart;
-use App\Models\Order;
-use App\Models\Product;
 use Illuminate\Database\Eloquent\Factories\HasFactory;
 use Illuminate\Database\Eloquent\SoftDeletes;
 use Illuminate\Foundation\Auth\User as Authenticatable;
 use Illuminate\Notifications\Notifiable;
-use Illuminate\Support\Facades\Hash;
 use Laravel\Sanctum\HasApiTokens;
 
-class User extends Authenticatable
+class Admin extends Authenticatable
 {
     use HasApiTokens, HasFactory, Notifiable, SoftDeletes;
 
@@ -45,26 +40,4 @@ class User extends Authenticatable
         'email_verified_at' => 'datetime',
         'password' => 'hashed',
     ];
-
-    public function carts(){
-        return $this->hasMany(Cart::class);
-    }
-
-    public function orders(){
-        return $this->hasMany(Order::class, 'user_id');
-    }
-
-    public function products(){
-        return $this->belongsToMany(Product::class, 'carts', 'user_id', 'product_id');
-    }
-
-    public function user_devices(){
-        return $this->hasMany(UserDevice::class);
-    }
-
-    public function user_info(){
-        return $this->hasMany(UserInfo::class);
-    }
-
-
 }

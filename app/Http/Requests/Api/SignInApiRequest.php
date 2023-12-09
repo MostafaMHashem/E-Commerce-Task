@@ -35,6 +35,11 @@ class SignInApiRequest extends ApiMasterRequest
                 return $this->get('email') == null;
             })
         ];
+
+        $validator['password'] = [
+            'required',
+            'string',
+        ];
         return $validator;
     }
 }

@@ -16,9 +16,13 @@ class SignInApiService
     {
         try {
 
-            $userPhone = User::wherePhone($data["phone"])->first();
+            $data["phone"] = $data["phone"] ?? null;
+            $data["email"] = $data["email"] ?? null;
 
-            $userEmail = User::whereEmail($data["email"])->first();
+            $userPhone = $data["phone"] ? User::wherePhone($data["phone"])->first() : null;
+
+            $userEmail = $data["email"] ? User::whereEmail($data["email"])->first() : null;
+
 
             if ($userPhone) {
                 $user = $userPhone;
@@ -42,10 +46,10 @@ class SignInApiService
 
                     //add device to user
                     $user->user_devices()->firstOrCreate([
-                        'device_token' => $data['device_token'],
-                        'device_type' => $data['device_type'],
-                        'device_id' => $data['device_id'],
-                        'device_name' => $data['device_name'],
+                        'device_token' => $data['device_token'] ?? null,
+                        'device_type' => $data['device_type'] ?? null,
+                        'device_id' => $data['device_id'] ?? null,
+                        'device_name' => $data['device_name'] ?? null,
                     ]);
                 }
             }else{
