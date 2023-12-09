@@ -73,7 +73,7 @@ class CartApiService
 
             if ($cart->product_quantity == $product->quantity) {
                 return new DataFailed(message: "product stock is zero");
-            } elseif ($cart->product_quantity + $data['product_quantity'] >= $product->quantity) {
+            } elseif ($cart->product_quantity + $data['product_quantity'] > $product->quantity) {
                 return new DataFailed(message: "product stock is less than product quantity");
             }
 
