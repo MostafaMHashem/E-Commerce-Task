@@ -27,6 +27,7 @@ class OrderDataTable extends DataTable
             ->addColumn('user_name', function ($query) {
                 return $query->user->name;
             })
+            
             ->addColumn('user_phone', function ($query) {
                 return $query->user->phone;
             })
@@ -39,7 +40,6 @@ class OrderDataTable extends DataTable
                 'user_name',
                 'user_phone',
                 'user_address',
-
             ]);
     }
 

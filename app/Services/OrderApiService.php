@@ -27,7 +27,7 @@ class OrderApiService
             ]);
 
             $product_ids = $auth_user->carts->pluck('product_id')->toArray();
-            $order->products()->attach($product_ids);
+            $order->products()->attach($product_ids, ['user_id' => auth('api')->id()]);
             $order->update([
                 'price_before' => $auth_user->carts->sum('price'),
             ]);
