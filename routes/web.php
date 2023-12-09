@@ -1,6 +1,7 @@
 <?php
 
 use App\Http\Controllers\Dashboard\Auth\SignInDashboardController;
+use App\Http\Controllers\Dashboard\Auth\SignoutDashboardController;
 use App\Http\Controllers\Dashboard\OrderController;
 use Illuminate\Support\Facades\Route;
 
@@ -24,7 +25,7 @@ Route::prefix('admin')->middleware('guest:admin')->name('admin.')->group(functio
 });
 
 Route::prefix('admin')->middleware('auth:admin')->name('admin.')->group(function () {
-    // Route::get('signOut', [SignInDashboardController::class, 'signOut'])->name('signOut');
+    Route::get('signOut', [SignoutDashboardController::class, 'signOut'])->name('auth.signOut');
     Route::controller(OrderController::class)->name('orders.')->group(function () {
         Route::get('orders', 'index')->name('index');
     });

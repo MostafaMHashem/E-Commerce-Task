@@ -14,9 +14,7 @@
             <div class="row">
                 <div class="main_topic  ">
                     <h4> المدن </h4>
-                    <a class="btn first" href="{{ route('admin.cities.create') }}"> <i class="bi bi-plus"></i> مدينة
-                        جديد
-                    </a>
+                    
                 </div>
             </div>
 
@@ -29,13 +27,12 @@
             <div class="row">
                 <div class="table-responsive">
 
-                    {{-- {!! $dataTable->table(
+                    {!! $dataTable->table(
                         [
                             'class' => 'table-responsive table_expenses table_topic',
                         ],
                         true,
-                    ) !!} --}}
-                    {{-- {!! $dataTable->table([], true) !!} --}}
+                    ) !!}
                 </div>
 
 
@@ -49,5 +46,5 @@
 
 @section('script')
     @include('layouts.dashboard.includes.indexScripts')
-    {{-- {{ $dataTable->scripts() }} --}}
+    {{ $dataTable->scripts() }}
 @endsection

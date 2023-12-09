@@ -14,7 +14,7 @@
                 </li>
 
                 <li class="nav-item">
-                    <a href="javascript:void(0)" class="nav-link align-middle">
+                    <a href="{{ route('admin.orders.index') }}" class="nav-link align-middle">
                         <img src="{{ asset('dashboardAssets/image/note-icon.png') }}" alt="icon" />
                         <span>الطلبات</span>
                     </a>

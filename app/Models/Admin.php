@@ -41,5 +41,8 @@ class Admin extends Authenticatable
         'password' => 'hashed',
     ];
 
-    
+    public function getImageLinkAttribute() {
+        $val = $this->image;
+        return $val ? asset($val) : '';
+    }
 }

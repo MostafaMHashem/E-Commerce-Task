@@ -40,7 +40,7 @@
                 console.log('entered if');
 
                 $.ajax({
-                url: `{{ route('admin.auth.logout') }}`,
+                url: `{{ route('admin.auth.signOut') }}`,
                 type: 'GET',
                 data: {
                     '_token': $('meta[name="csrf-token"]').attr('content')
@@ -50,7 +50,7 @@
             }).done(function(result) {
                 // $('.selectpicker').selectpicker('refresh');
                 location.reload;
-                `{{ route('admin.auth.login') }}`
+                `{{ route('admin.auth.signIn') }}`
             }).fail(function(result) {
                 // $('.case_container').html(result);
                 alert('failed')

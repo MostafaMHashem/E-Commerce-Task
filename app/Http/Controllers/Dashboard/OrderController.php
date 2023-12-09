@@ -2,6 +2,7 @@
 
 namespace App\Http\Controllers\Dashboard;
 
+use App\DataTables\OrderDataTable;
 use App\Http\Controllers\Controller;
 use App\Http\Requests\StoreOrderRequest;
 use App\Http\Requests\UpdateOrderRequest;
@@ -13,8 +14,8 @@ class OrderController extends Controller
     /**
      * Display a listing of the resource.
      */
-    public function index()
+    public function index(OrderDataTable $dataTable)
     {
-        return view($this->view . 'index');
+        return $dataTable->render($this->view . 'index');
     }
 }
