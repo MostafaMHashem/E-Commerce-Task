@@ -43,7 +43,6 @@ return new class extends Migration
             $table->id();
             $table->foreignId('user_id')->nullable()->constrained('users')->onDelete('cascade');
             $table->string('address')->nullable();
-            $table->string('phone')->nullable();
             $table->unsignedTinyInteger('is_default')->default(1);
             $table->timestamps();
         });
