@@ -51,6 +51,13 @@
                             <button type="submit" class="btn first w-100">Login</button>
                         </div>
                     </form>
+                    @error('phone')
+                    <div class="alert alert-danger">{{ $message }}</div>
+                    @enderror
+                    @error('password')
+                    <div class="alert alert-danger">{{ $message }}</div>
+
+                    @enderror
                 </div>
             </div>
         </div>
