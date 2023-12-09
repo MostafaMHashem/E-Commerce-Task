@@ -51,21 +51,21 @@
                             <button type="submit" class="btn first w-100">Login</button>
                         </div>
                     </form>
-                    @error('phone')
+                    {{-- @error('phone')
                     <div class="alert alert-danger">{{ $message }}</div>
                     @enderror
                     @error('password')
                     <div class="alert alert-danger">{{ $message }}</div>
-
-                    @enderror
+                    @enderror --}}
                 </div>
             </div>
         </div>
     </div>
 
     <!-- main js -->
+    <script src="{{ asset('dashboardAssets/js/jquery-3.7.1.min.js') }}"></script>
+    <script src="{{ asset('dashboardAssets/js/all.min.js') }}"></script>
     <script src="{{ asset('dashboardAssets/js/bootstrap.min.js') }}"></script>
-    <script src="{{ asset('dashboardAssets/js/jquery-3.5.1.min.js') }}"></script>
     <script src="{{ asset('dashboardAssets/js/bootstrap-select.min.js') }}"></script>
     <script src="{{ asset('dashboardAssets/js/main.js') }}"></script>
     <!-- main js -->
