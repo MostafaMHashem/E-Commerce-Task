@@ -27,13 +27,14 @@ class OrderDataTable extends DataTable
             ->addColumn('user_name', function ($query) {
                 return $query->user->name;
             })
-            
+
             ->addColumn('user_phone', function ($query) {
                 return $query->user->phone;
             })
 
             ->addColumn('user_address', function ($query) {
-                return $query->user->user_info()->where('is_default', 1)->value('address');
+                // return $query->user->user_info()->where('is_default', 1)->value('address');
+                return $query->user_address->address ?? '---';
             })
             ->rawColumns([
                 'action',
@@ -73,6 +74,8 @@ class OrderDataTable extends DataTable
         return [
             Column::make('id'),
             Column::make('user_name'),
+            Column::make('user_phone'),
+            Column::make('user_address'),
             Column::make('created_at'),
             Column::computed('action')
                 ->exportable(false)

@@ -46,6 +46,11 @@ class AddOrderApiRequest extends ApiMasterRequest
             "min:1",
         ];
 
+        $validator['user_address_id'] = [
+            "required",
+            "exists:user_info,id",
+        ];
+
 
 
         return $validator;
