@@ -1,5 +1,7 @@
 <?php
 
+use App\Http\Controllers\Dashboard\Auth\SignInDashboardController;
+use App\Http\Controllers\Dashboard\OrderController;
 use Illuminate\Support\Facades\Route;
 
 /*
@@ -13,6 +15,17 @@ use Illuminate\Support\Facades\Route;
 |
 */
 
-Route::get('/', function () {
-    return view('welcome');
+
+Route::prefix('admin')->middleware('guest:admin')->name('admin.')->group(function () {
+    Route::controller(SignInDashboardController::class)->name('auth.')->group(function () {
+        Route::get('signIn', 'signIn')->name('signIn');
+        Route::post('postSignIn', 'postSignIn')->name('signIn.post');
+    });
+});
+
+Route::prefix('admin')->middleware('auth:admin')->name('admin.')->group(function () {
+    // Route::get('signOut', [SignInDashboardController::class, 'signOut'])->name('signOut');
+    Route::controller(OrderController::class)->name('orders.')->group(function () {
+        Route::get('orders', 'index')->name('index');
+    });
 });
