@@ -24,11 +24,11 @@ class CartApiController extends Controller
         return $service->delete_from_cart($validated_data)->response();
     }
 
-    public function increments(IncrementDecrementCartApiRequest $request)
+    public function increment(IncrementDecrementCartApiRequest $request)
     {
         $validated_data = $request->validated();
         $service = new CartApiService();
-        return $service->increments($validated_data)->response();
+        return $service->increment($validated_data)->response();
     }
 
     public function decrement(IncrementDecrementCartApiRequest $request)

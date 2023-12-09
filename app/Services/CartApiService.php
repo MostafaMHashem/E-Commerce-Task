@@ -64,7 +64,7 @@ class CartApiService
         }
     }
 
-    public function increments($data): DataStatus
+    public function increment($data): DataStatus
     {
         try {
             $cart = Cart::find($data['cart_id']);
@@ -88,8 +88,8 @@ class CartApiService
             //response
 
             return new DataSuccess(
-                resourceData: CartResource::make($data),
-                message: "Cart increments {$data->title} successfully",
+                resourceData: CartResource::make($cart),
+                message: "Cart increments {$product->name} successfully",
             );
         } catch (\Throwable $th) {
             // throw $th;
@@ -102,6 +102,8 @@ class CartApiService
     {
         try {
             $cart = Cart::find($data['cart_id']);
+            $product = Product::find($data['product_id']);
+            
             if ($cart->product_quantity == 0) {
                 return new DataFailed(message: "Cart quantity is zero");
             }
@@ -117,7 +119,7 @@ class CartApiService
             //response
             return new DataSuccess(
                 resourceData: CartResource::make($data),
-                message: "Cart increments {$data->title} successfully",
+                message: "Cart increments {$product->name} successfully",
             );
         } catch (\Throwable $th) {
             // throw $th;
