@@ -16,6 +16,7 @@ return new class extends Migration
             $table->string('name')->nullable();
             $table->unsignedInteger('quantity')->default(0);
             $table->text('image')->nullable();
+            $table->float('price')->default(0.0);
             $table->timestamps();
         });
     }

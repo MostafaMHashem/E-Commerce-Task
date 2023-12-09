@@ -30,6 +30,7 @@ class CartApiService
                 ],
                 [
                     'product_quantity' => DB::raw('product_quantity + ' . ($data['product_quantity'])),
+                    'price' => DB::raw('price + ' . ($product->price * ($data['product_quantity']))),
                 ]
             );
 
@@ -80,7 +81,7 @@ class CartApiService
 
             $cart->update([
                 'product_quantity' => DB::raw('product_quantity + ' . $data['product_quantity']),
-                // 'price' => DB::raw('price + ' . $data['price']),
+                'price' => DB::raw('price + ' . ($product->price * ($data['product_quantity']))),
             ]);
 
             DB::commit();
@@ -103,7 +104,7 @@ class CartApiService
         try {
             $cart = Cart::find($data['cart_id']);
             $product = Product::find($data['product_id']);
-            
+
             if ($cart->product_quantity == 0) {
                 return new DataFailed(message: "Cart quantity is zero");
             }
@@ -112,7 +113,7 @@ class CartApiService
 
             $cart->update([
                 'product_quantity' => DB::raw('product_quantity - ' . $data['product_quantity']),
-                // 'price' => DB::raw('price + ' . $data['price']),
+                'price' => DB::raw('price - ' . ($product->price * ($data['product_quantity']))),
             ]);
 
             DB::commit();

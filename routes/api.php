@@ -3,6 +3,7 @@
 use App\Http\Controllers\Api\Auth\SignInApiController;
 use App\Http\Controllers\Api\Auth\SignUPApiController;
 use App\Http\Controllers\Api\CartApiController;
+use App\Http\Controllers\Api\OrderApiController;
 use App\Http\Controllers\Api\ProductApiController;
 use Illuminate\Http\Request;
 use Illuminate\Support\Facades\Route;
@@ -37,5 +38,9 @@ Route::controller(CartApiController::class)->middleware('auth:api')->group(funct
     Route::post('delete_from_cart', 'delete_from_cart');
     Route::post('increment', 'increment');
     Route::post('decrement', 'decrement');
+});
+
+Route::controller(OrderApiController::class)->middleware('auth:api')->group(function () {
+    Route::post('create_order', 'create_order');
 });
 

@@ -22,6 +22,7 @@ class ProductFactory extends Factory
             "name"=>fake()->word(),
             "quantity" => fake()->numberBetween(1, 15),
             "image" => fake()->imageUrl(width:640, height:480, category:'products', randomize:true),
+            'price' => fake()->numberBetween(100, 1000),
         ];
     }
 }
