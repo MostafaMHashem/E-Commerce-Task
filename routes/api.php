@@ -34,7 +34,7 @@ Route::controller(ProductApiController::class)->group(function () {
 
 Route::controller(CartApiController::class)->middleware('auth:api')->group(function () {
     Route::post('add_to_cart', 'add_to_cart');
-    Route::post('delete_from_cart', 'delete_from_cart')->name('delete_from_cart');
+    Route::post('delete_from_cart', 'delete_from_cart');
     Route::post('increment', 'increments');
     Route::post('decrement', 'decrement');
 });

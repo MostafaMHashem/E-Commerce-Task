@@ -25,14 +25,15 @@ class AddDeleteCartApiRequest extends ApiMasterRequest
      */
     public function rules(): array
     {
+        
         $validator = [];
 
         $validator['cart_id'] = [
             'nullable',
-            'exists:carts,id',
             Rule::requiredIf(function () {
-                return Request::is('delete_from_cart') ;
-            })
+                return Request::is('api/delete_from_cart') ? true : false ;
+            }),
+            'exists:carts,id',
         ];
 
         $validator['product_id'] = [

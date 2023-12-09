@@ -19,28 +19,20 @@ class CartApiService
     {
         try {
             $product = Product::find($data['product_id']);
-            $data['cart_id'] = $data['cart_id'] ?? null;
-            $data['product_quantity'] = $data['product_quantity'] ?? 1;
-            if ($data['cart_id']) {
-                $cart = Cart::find($data['cart_id']);
+            $data['cart_id'] ??= null;
+            $data['product_quantity'] ??= 1;
 
-                $cart->updateOrCreate(
-                    [
-                        'user_id' => auth('api')->id(),
-                        'product_id' => $data['product_id'],
-                    ],
-                    [
-                        'product_quantity' => DB::raw('product_quantity + ' . ($data['product_quantity'])),
-                    ]
-                );
-            } else {
-                $cart = Cart::create([
+            $cart = Cart::updateOrCreate(
+                [
+                    // 'cart_id' => $data['cart_id'],
                     'user_id' => auth('api')->id(),
                     'product_id' => $data['product_id'],
-                    'product_quantity' => $data['product_quantity'] ?? 0,
-                    // 'price'
-                ]);
-            }
+                ],
+                [
+                    'product_quantity' => DB::raw('product_quantity + ' . ($data['product_quantity'])),
+                ]
+            );
+
 
             //response
 
@@ -58,12 +50,13 @@ class CartApiService
     {
         try {
             $product = Product::find($data['product_id']);
-            $cart = Cart::where('user_id', auth('api')->id())->where('cart_id', $data['cart_id'])->where('product_id', $data['product_id'])->delete();
+            $cart = Cart::where('id', $data['cart_id'])
+            ->where('user_id', auth('api')->id())->where('product_id', $data['product_id'])->delete();
 
 
             //response
             return new DataSuccess(
-                message: "delete_from_cart {$product->name}  successfully",
+                message: "delete {$product->name} from cart  successfully",
             );
         } catch (\Throwable $th) {
             // throw $th;
