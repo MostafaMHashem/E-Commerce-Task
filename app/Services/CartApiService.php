@@ -19,14 +19,20 @@ class CartApiService
     {
         try {
             $product = Product::find($data['product_id']);
+            $data['cart_id'] = $data['cart_id'] ?? null;
+            $data['product_quantity'] = $data['product_quantity'] ?? 1;
             if ($data['cart_id']) {
                 $cart = Cart::find($data['cart_id']);
 
-                $cart->update([
-                    'product_id' => $data['product_id'],
-                    'product_quantity' => $data['product_quantity'] ?? 0,
-                    // 'price' => DB::raw('price + ' . $data['price']),
-                ]);
+                $cart->updateOrCreate(
+                    [
+                        'user_id' => auth('api')->id(),
+                        'product_id' => $data['product_id'],
+                    ],
+                    [
+                        'product_quantity' => DB::raw('product_quantity + ' . ($data['product_quantity'])),
+                    ]
+                );
             } else {
                 $cart = Cart::create([
                     'user_id' => auth('api')->id(),
@@ -40,7 +46,7 @@ class CartApiService
 
             return new DataSuccess(
                 resourceData: CartResource::make($cart),
-                message: "add_to_cart {$product->name}  successfully",
+                message: "add {$product->name} to cart successfully",
             );
         } catch (\Throwable $th) {
             // throw $th;
@@ -52,7 +58,7 @@ class CartApiService
     {
         try {
             $product = Product::find($data['product_id']);
-            $cart = Cart::where('cart_id',$data['cart_id'])->where('product_id',$data['product_id'])->delete();
+            $cart = Cart::where('user_id', auth('api')->id())->where('cart_id', $data['cart_id'])->where('product_id', $data['product_id'])->delete();
 
 
             //response
