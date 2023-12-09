@@ -21,22 +21,23 @@ class CartApiService
             $product = Product::find($data['product_id']);
             $data['cart_id'] ??= null;
             $data['product_quantity'] ??= 1;
-
+            DB::beginTransaction();
             $cart = Cart::updateOrCreate(
                 [
-                    // 'cart_id' => $data['cart_id'],
                     'user_id' => auth('api')->id(),
                     'product_id' => $data['product_id'],
                 ],
                 [
-                    'product_quantity' => DB::raw('product_quantity + ' . ($data['product_quantity'])),
-                    'price' => DB::raw('price + ' . ($product->price * ($data['product_quantity']))),
+                    'product_quantity' => DB::raw('product_quantity + ' . $data['product_quantity']),
+                    'price' => DB::raw('price + (' . $product->price . ' * ' . $data['product_quantity'] . ')'),
                 ]
             );
 
 
+
             //response
 
+            DB::commit();
             return new DataSuccess(
                 resourceData: CartResource::make($cart),
                 message: "add {$product->name} to cart successfully",
@@ -52,7 +53,7 @@ class CartApiService
         try {
             $product = Product::find($data['product_id']);
             $cart = Cart::where('id', $data['cart_id'])
-            ->where('user_id', auth('api')->id())->where('product_id', $data['product_id'])->delete();
+                ->where('user_id', auth('api')->id())->where('product_id', $data['product_id'])->delete();
 
 
             //response
