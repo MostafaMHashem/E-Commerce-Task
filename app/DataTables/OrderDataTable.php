@@ -27,8 +27,19 @@ class OrderDataTable extends DataTable
             ->addColumn('user_name', function ($query) {
                 return $query->user->name;
             })
+            ->addColumn('user_phone', function ($query) {
+                return $query->user->phone;
+            })
+
+            ->addColumn('user_address', function ($query) {
+                return $query->user->user_info()->where('is_default', 1)->value('address');
+            })
             ->rawColumns([
-                'action'
+                'action',
+                'user_name',
+                'user_phone',
+                'user_address',
+
             ]);
     }
 
@@ -46,12 +57,12 @@ class OrderDataTable extends DataTable
     public function html(): HtmlBuilder
     {
         return $this->builder()
-                    ->setTableId('order-table')
-                    ->columns($this->getColumns())
-                    ->minifiedAjax()
-                    //->dom('Bfrtip')
-                    ->orderBy(1)
-                    ->selectStyleSingle();
+            ->setTableId('order-table')
+            ->columns($this->getColumns())
+            ->minifiedAjax()
+            //->dom('Bfrtip')
+            ->orderBy(1)
+            ->selectStyleSingle();
     }
 
     /**
@@ -64,10 +75,10 @@ class OrderDataTable extends DataTable
             Column::make('user_name'),
             Column::make('created_at'),
             Column::computed('action')
-                  ->exportable(false)
-                  ->printable(false)
-                  ->width(60)
-                  ->addClass('text-center'),
+                ->exportable(false)
+                ->printable(false)
+                ->width(60)
+                ->addClass('text-center'),
         ];
     }
 
