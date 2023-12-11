@@ -53,14 +53,13 @@ class CartApiService
     public function delete_from_cart($data): DataStatus
     {
         try {
-            $product = Product::find($data['product_id']);
             $cart = Cart::where('id', $data['cart_id'])
-                ->where('user_id', auth('api')->id())->where('product_id', $data['product_id'])->delete();
+                ->where('user_id', auth('api')->id())->delete();
 
 
             //response
             return new DataSuccess(
-                message: "delete {$product->name} from cart  successfully",
+                message: "delete  cart  successfully",
             );
         } catch (\Throwable $th) {
             // throw $th;
