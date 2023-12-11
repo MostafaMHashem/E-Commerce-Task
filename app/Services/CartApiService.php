@@ -28,7 +28,9 @@ class CartApiService
                     'product_id' => $data['product_id'],
                 ],
                 [
+                    // 'product_quantity' => ($cart->product_quantity ?? 0) + $data['product_quantity'],
                     'product_quantity' => DB::raw('product_quantity + ' . $data['product_quantity']),
+                    // 'price' => ($cart->price ?? 0 )+ ($product->price * $data['product_quantity']),
                     'price' => DB::raw('price + (' . $product->price . ' * ' . $data['product_quantity'] . ')'),
                 ]
             );
@@ -69,8 +71,8 @@ class CartApiService
     public function increment($data): DataStatus
     {
         try {
-            $cart = Cart::find($data['cart_id']);
-            $product = Product::find($data['product_id']);
+            $cart = Cart::where('id', $data['cart_id'])->where('user_id', auth('api')->id())->first();
+            $product = Product::find($cart->product_id);
 
             if ($cart->product_quantity == $product->quantity) {
                 return new DataFailed(message: "product stock is zero");
@@ -103,8 +105,8 @@ class CartApiService
     public function decrement($data): DataStatus
     {
         try {
-            $cart = Cart::find($data['cart_id']);
-            $product = Product::find($data['product_id']);
+            $cart = Cart::where('id', $data['cart_id'])->where('user_id', auth('api')->id())->first();
+            $product = Product::find($cart->product_id);
 
             if ($cart->product_quantity == 0) {
                 return new DataFailed(message: "Cart quantity is zero");

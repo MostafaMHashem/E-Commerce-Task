@@ -32,11 +32,6 @@ class IncrementDecrementCartApiRequest extends ApiMasterRequest
 
         ];
 
-        $validator['product_id'] = [
-            'required',
-            'exists:products,id',
-        ];
-
         $validator['product_quantity'] = [
             'required',
             'integer',

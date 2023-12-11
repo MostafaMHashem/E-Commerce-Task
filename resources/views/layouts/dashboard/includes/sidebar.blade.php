@@ -7,7 +7,7 @@
                     <img src="{{ asset('dashboardAssets/image/logo.png') }}" alt="logo_sidebar" class="logo" />
                 </div> -->
                 <li class="nav-item">
-                    <a href="index.html" class="nav-link align-middle">
+                    <a href="javascript:void(0)" class="nav-link align-middle">
                         <img src="{{ asset('dashboardAssets/image/home-icon.png') }}" alt="icon" />
                         <span>الرئيسية</span>
                     </a>

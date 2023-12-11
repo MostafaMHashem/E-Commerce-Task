@@ -52,6 +52,26 @@ class SignUPApiRequest extends ApiMasterRequest
             Password::defaults(),
         ];
 
+        $validator['device_token'] = [
+            'nullable',
+            'string',
+        ];
+
+        $validator['device_type'] = [
+            'nullable',
+            'string',
+        ];
+
+        $validator['device_id'] = [
+            'nullable',
+            'string',
+        ];
+
+        $validator['device_name'] = [
+            'nullable',
+            'string',
+        ];
+
         return $validator;
     }
 }

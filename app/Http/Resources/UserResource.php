@@ -22,6 +22,7 @@ class UserResource extends JsonResource
             'token' => $this->api_token ?? '',
             'status' => $this->status ?? 1,
             'address' => $this->user_info()?->where('is_default', 1)->first()?->address ?? '',
+            'user_devices' => UserDeviceResource::collection($this->user_devices),
         ];
     }
 }
