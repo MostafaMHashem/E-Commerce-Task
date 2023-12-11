@@ -13,8 +13,8 @@
         <div class="container">
             <div class="row">
                 <div class="main_topic  ">
-                    <h4> المدن </h4>
-                    
+                    <h4> طلبات العملاء </h4>
+
                 </div>
             </div>
 
@@ -22,7 +22,7 @@
             <!-- card income -->
             <!-- list section -->
             <div class="main_topic  ">
-                <h4> كل المدن </h4>
+                <h4> كل طلبات العملاء </h4>
             </div>
             <div class="row">
                 <div class="table-responsive">

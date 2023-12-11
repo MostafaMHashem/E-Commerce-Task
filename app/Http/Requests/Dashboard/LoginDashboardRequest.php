@@ -24,17 +24,17 @@ class LoginDashboardRequest extends FormRequest
     {
 
         $validator = [];
-        // $validator['email'] = [
-        //     'nullable',
-        //     'email',
-        // ];
+        $validator['email'] = [
+            'nullable',
+            'email',
+        ];
 
         $validator['phone'] = [
-            'required',
+            'nullable',
             'string',
-            // Rule::requiredIf(function () {
-            //     return $this->get('email') == null;
-            // })
+            Rule::requiredIf(function () {
+                return $this->get('email') == null;
+            })
         ];
 
         $validator['password'] = [

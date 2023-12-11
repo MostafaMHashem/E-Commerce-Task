@@ -11,13 +11,13 @@
 
 Laravel is a web application framework with expressive, elegant syntax. We believe development must be an enjoyable and creative experience to be truly fulfilling. Laravel takes the pain out of development by easing common tasks used in many web projects, such as:
 
-- [Simple, fast routing engine](https://laravel.com/docs/routing).
-- [Powerful dependency injection container](https://laravel.com/docs/container).
-- Multiple back-ends for [session](https://laravel.com/docs/session) and [cache](https://laravel.com/docs/cache) storage.
-- Expressive, intuitive [database ORM](https://laravel.com/docs/eloquent).
-- Database agnostic [schema migrations](https://laravel.com/docs/migrations).
-- [Robust background job processing](https://laravel.com/docs/queues).
-- [Real-time event broadcasting](https://laravel.com/docs/broadcasting).
+-   [Simple, fast routing engine](https://laravel.com/docs/routing).
+-   [Powerful dependency injection container](https://laravel.com/docs/container).
+-   Multiple back-ends for [session](https://laravel.com/docs/session) and [cache](https://laravel.com/docs/cache) storage.
+-   Expressive, intuitive [database ORM](https://laravel.com/docs/eloquent).
+-   Database agnostic [schema migrations](https://laravel.com/docs/migrations).
+-   [Robust background job processing](https://laravel.com/docs/queues).
+-   [Real-time event broadcasting](https://laravel.com/docs/broadcasting).
 
 Laravel is accessible, powerful, and provides tools required for large, robust applications.
 
@@ -35,19 +35,19 @@ We would like to extend our thanks to the following sponsors for funding Laravel
 
 ### Premium Partners
 
-- **[Vehikl](https://vehikl.com/)**
-- **[Tighten Co.](https://tighten.co)**
-- **[WebReinvent](https://webreinvent.com/)**
-- **[Kirschbaum Development Group](https://kirschbaumdevelopment.com)**
-- **[64 Robots](https://64robots.com)**
-- **[Curotec](https://www.curotec.com/services/technologies/laravel/)**
-- **[Cyber-Duck](https://cyber-duck.co.uk)**
-- **[DevSquad](https://devsquad.com/hire-laravel-developers)**
-- **[Jump24](https://jump24.co.uk)**
-- **[Redberry](https://redberry.international/laravel/)**
-- **[Active Logic](https://activelogic.com)**
-- **[byte5](https://byte5.de)**
-- **[OP.GG](https://op.gg)**
+-   **[Vehikl](https://vehikl.com/)**
+-   **[Tighten Co.](https://tighten.co)**
+-   **[WebReinvent](https://webreinvent.com/)**
+-   **[Kirschbaum Development Group](https://kirschbaumdevelopment.com)**
+-   **[64 Robots](https://64robots.com)**
+-   **[Curotec](https://www.curotec.com/services/technologies/laravel/)**
+-   **[Cyber-Duck](https://cyber-duck.co.uk)**
+-   **[DevSquad](https://devsquad.com/hire-laravel-developers)**
+-   **[Jump24](https://jump24.co.uk)**
+-   **[Redberry](https://redberry.international/laravel/)**
+-   **[Active Logic](https://activelogic.com)**
+-   **[byte5](https://byte5.de)**
+-   **[OP.GG](https://op.gg)**
 
 ## Contributing
 
@@ -64,4 +64,48 @@ If you discover a security vulnerability within Laravel, please send an e-mail t
 ## License
 
 The Laravel framework is open-sourced software licensed under the [MIT license](https://opensource.org/licenses/MIT).
+
 # E-Commerce-Task
+
+this project have dashboard it's link [http://127.0.0.1:8000/admin/signIn]
+and the orders link [http://127.0.0.1:8000/admin/orders]
+
+### admin credentials
+- 'phone' => '123456789',
+- 'password' => 'password',
+
+## packages
+
+### yajra for the dataTables
+
+we use yajra dataTable package
+and the artisan command is [php artisan dataTable:make the-dataTable-path-or-name]
+ex. [php artisan dataTable:make OrderDataTable]
+
+### for notification we use laravel webSocket
+
+-   **[the backend config]**
+
+    -   we uncommented the App\Providers\BroadcastServiceProvider::class,
+    -   and we pusher channel package **composer require pusher/pusher-php-server for**
+    -   and in the .env we set BROADCAST_DRIVER=pusher
+    -   **in the .env we added this pusher channel variables**
+        - **PUSHER_APP_ID = "1722961"**
+        - **PUSHER_APP_KEY = "75cd3997ad9794e60acc"**
+        - **PUSHER_APP_SECRET = "f5ae739ea82c5e71fffe"**
+        - **PUSHER_APP_CLUSTER = "eu"**
+    - we created OrderCreated event class
+
+-   **[the frontend config]**
+    -   we use laravel echo to listen to the events and subscribe to the channels and install it with this command
+        **npm install** to make sure the npm is installed
+        
+        **npm install --save-dev laravel-echo pusher-js**
+
+
+    -   in bootstrap.js file we uncommented the code for laravle echo
+
+### customer api
+
+-   **[path][http://127.0.0.1:8000/api/]**
+-   **[login]**
