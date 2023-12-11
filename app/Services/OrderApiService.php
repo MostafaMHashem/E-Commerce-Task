@@ -22,6 +22,9 @@ class OrderApiService
             $auth_user = User::find(auth('api')->id());
             DB::beginTransaction();
 
+            if($auth_user->carts->count() == 0 ){
+                return new DataFailed(message: "you have no products selected yet , go and select the products you prefer to your cart");
+            }
             $order = Order::create([
                 'user_id' => auth('api')->id(),
             ]);

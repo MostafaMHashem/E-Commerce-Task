@@ -3,6 +3,7 @@
 namespace App\DataTables;
 
 use App\Models\Order;
+use Carbon\Carbon;
 use Illuminate\Database\Eloquent\Builder as QueryBuilder;
 use Yajra\DataTables\EloquentDataTable;
 use Yajra\DataTables\Html\Builder as HtmlBuilder;
@@ -22,7 +23,7 @@ class OrderDataTable extends DataTable
     public function dataTable(QueryBuilder $query): EloquentDataTable
     {
         return (new EloquentDataTable($query))
-            ->addColumn('action', 'dashborad.orders.action')
+            ->addColumn('action', 'dashboard.orders.action')
             ->setRowId('id')
             ->addColumn('user_name', function ($query) {
                 return $query->user->name;
@@ -30,6 +31,10 @@ class OrderDataTable extends DataTable
 
             ->addColumn('user_phone', function ($query) {
                 return $query->user->phone;
+            })
+
+            ->editColumn('created_at', function ($query) {
+                return Carbon::parse($query->created_at)->format('Y-m-d g:i A');
             })
 
             ->rawColumns([
