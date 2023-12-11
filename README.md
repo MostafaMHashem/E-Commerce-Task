@@ -1,18 +1,24 @@
 
 # E-Commerce-Task
 
-this project have dashboard it's link [http://127.0.0.1:8000/admin/signIn]
-and the orders link [http://127.0.0.1:8000/admin/orders]
+This project includes a dashboard and orders interface: 
 
-### admin credentials
-- 'phone' => '123456789',
-- 'password' => 'password',
+- Dashboard: [http://127.0.0.1:8000/admin/signIn](http://127.0.0.1:8000/admin/signIn)
+- Orders: [http://127.0.0.1:8000/admin/orders](http://127.0.0.1:8000/admin/orders)
 
-## packages
 
-### yajra for the dataTables
+### Admin Credentials (For Testing):
 
-we use yajra dataTable package
+- **Phone:** '123456789'
+- **Password:** 'password'
+
+
+## Packages
+
+### Yajra DataTable for Data Tables
+
+We utilize the Yajra DataTable package, and you can create a data table using the artisan command:
+
 and the artisan command is [php artisan dataTable:make the-dataTable-path-or-name]
 ex. [php artisan dataTable:make OrderDataTable]
 
