@@ -37,6 +37,20 @@ class OrderApiService
             ]);
             $auth_user->carts()->delete();
 
+            /** for myfatoorah payment method */
+            $payment_data_submit = [
+                "CustomerName" => $auth_user->name,
+                "InvoiceValue" =>  $order->total_price ?? 100,
+                "CustomerMobile" => $auth_user->phone,
+                "CustomerEmail" =>  $auth_user->email,
+                "CallBackUrl" => "https://yoursite.com/success",
+                "ErrorUrl" => "https://yoursite.com/error",
+                "Language"=> "ar",
+                "DisplayCurrencyIso" => "KWD",
+                "MobileCountryCode" => "965",
+            ];
+            /** End of myfatoorah */
+
             DB::commit();
 
             //response
