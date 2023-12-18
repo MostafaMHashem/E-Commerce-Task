@@ -8,7 +8,8 @@
     <body dir="{{App::isLocale('ar') ? 'rtl' : 'ltr'}}">
         <div class="mf-payment-methods-container">
             <div class="mf-danger-text">
-                {{$exMessage}}
+                {{-- {{$exMessage}} --}}
+                {{ request()->all() }}
             </div>
         </div>
     </body>
