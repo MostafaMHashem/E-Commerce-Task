@@ -33,10 +33,11 @@ class MyFatoorahApiController extends Controller
     }
 
     public function error_page(Request $request){
+        echo($request->all());
         return view('myfatoorah.error');
     }
     public function sucess_page(Request $request){
-        dd($request->all());
+        echo($request->all());
         return view('myfatoorah.success');
     }
 }

@@ -10,7 +10,8 @@
             <div class="mf-danger-text">
                 {{-- {{$exMessage}} --}}
                 {!! request()->paymentId !!}
-                {{ request() }}
+                {!! request()->Id !!}
+                
             </div>
         </div>
     </body>
