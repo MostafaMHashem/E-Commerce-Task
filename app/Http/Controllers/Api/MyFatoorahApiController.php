@@ -33,7 +33,9 @@ class MyFatoorahApiController extends Controller
     }
 
     public function error_page(Request $request){
-        echo($request->all());
+        // echo($request->all());
+        [$id,$pa] = $request->all();
+        echo($id);
         return view('myfatoorah.error');
     }
     public function sucess_page(Request $request){
