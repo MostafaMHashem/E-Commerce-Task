@@ -19,6 +19,7 @@ return new class extends Migration
             $table->float('price_before')->default(0.0);
             $table->float('tax')->default(0.0);
             $table->float('discount')->default(0.0);
+            $table->float('InvoiceId')->nullable();
             $table->timestamps();
         });
     }

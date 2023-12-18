@@ -2,63 +2,77 @@
 
 namespace App\Services;
 
+use App\Models\User\User;
 use App\ModelTax;
 use GuzzleHttp\Client;
-use Illuminate\Database\Eloguent\Model;
 use GuzzleHttp\Psr7\Request;
+use Illuminate\Database\Eloguent\Model;
+use Illuminate\Support\Facades\Http;
 
 class FatoorahServices
 {
-    private $base_url;
+    // private $base_url  = config('myfatoorah.fatoora_base_url', 'https://apitest.myfatoorah.com/');
     private $headers;
-    private $request_client;
+    public $order_api_service;
+    private $token;
+    const sandbox ="https://apitest.myfatoorah.com/" ;
+    const live= "https://api.myfatoorah.com/";
 
-    public function __construct(Client $request_client)
+    protected $base_url;
+
+    protected $mode;
+    public function __construct($mode ="test")
     {
-        $this->request_client = $request_client;
-        $this->base_url = env('fatoora_base_url', 'https://apitest.myfatoorah.com/');
+        $this->mode = $mode;
+
+        if($mode == "test"){
+            $this->base_url = self::sandbox;
+        }else{
+            $this->base_url = self::live;
+        }
+
+        $this->token = config('services.token_myfatoorah');
 
         $this->headers = [
             "Content-Type" => 'application/json',
-            "authorization" => 'Bearer ' . env("fatoora_token", "fatoora_token")
+            "Authorization" => 'Bearer '. $this->token
         ];
     }
 
-    public function buildRequest($url, $mothod, $data = [])
+    public function initial_data($data)
     {
-        $request = new Request($mothod, $this->base_url . $url, $this->headers);
-        if (!$data)
-            return false;
-        $response = $this->request_client->send($request, ['json' => $data]);
-        if ($response->getStatusCode() != 200)
-            return false;
-        $response = json_decode($response->getBody(), true);
-        return $response;
+
+
+        $response = Http::baseUrl($this->base_url)->withHeaders($this->headers)->asJson()
+        ->post('v2/InitiatePayment', $data);
+
+        $responseData=   $response->json();
+
+        if($responseData["IsSuccess"] == true && $responseData["ValidationErrors"] == null){
+
+            return $responseData;
+
+        }else{
+            return "Unexpected Error: " .$responseData;
+        }
     }
 
-    public function sendPayment($data)
-    {
-        $response  = $this->buildRequest('v2/SendPayment', 'POST', $data);
-        return $response;
-    }
-    public function getPaymentStatus($data)
-    {
-        $response  = $this->buildRequest('v2/getPaymentStatus', 'POST', $data);
-        return $response;
+
+    public function execute_payment($data){
+
+        $response = Http::baseUrl($this->base_url)->withHeaders($this->headers)->asJson()
+        ->post('v2/ExecutePayment', $data);
+
+        $responseData=   $response->json();
+
+        if($responseData["IsSuccess"] == true && $responseData["ValidationErrors"] == null){
+
+            return $responseData;
+        }else{
+            return "Unexpected Error: " .$responseData;
+        }
+
     }
 
-    function callAPI($endpointURL, $apiKey, $postFields = [])
-    {
-        $curl = curl_init($endpointURL);
-        curl_setopt_array($curl, array(
-            CURLOPT_CUSTOMREQUEST  => 'POST',
-            CURLOPT_POSTFIELDS     => json_encode($postFields),
-            CURLOPT_HTTPHEADER     => array("Authorization: Bearer $apiKey", 'Content-Type: application/json'),
-            CURLOPT_RETURNTRANSFER => true,
-        ));
-        $response = curl_exec($curl);
-        $curlErr  = curl_error($curl);
-        curl_close($curl);
-        return $response;
-    }
+
 }

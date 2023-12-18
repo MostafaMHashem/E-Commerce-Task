@@ -3,6 +3,7 @@
 use App\Http\Controllers\Api\Auth\SignInApiController;
 use App\Http\Controllers\Api\Auth\SignUPApiController;
 use App\Http\Controllers\Api\CartApiController;
+use App\Http\Controllers\Api\MyFatoorahApiController;
 use App\Http\Controllers\Api\OrderApiController;
 use App\Http\Controllers\Api\ProductApiController;
 use Illuminate\Http\Request;
@@ -42,5 +43,12 @@ Route::controller(CartApiController::class)->middleware('auth:api')->group(funct
 
 Route::controller(OrderApiController::class)->middleware('auth:api')->group(function () {
     Route::post('create_order', 'create_order');
+});
+
+Route::controller(MyFatoorahApiController::class)->group(function () {
+    Route::post('initial_data', 'initial_data');
+    Route::post('execute_payment', 'execute_payment');
+    Route::post('error', 'error_page');
+    Route::post('success', 'sucess_page');
 });
 

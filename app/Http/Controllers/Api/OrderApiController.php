@@ -4,7 +4,7 @@ namespace App\Http\Controllers\Api;
 
 use App\Http\Controllers\Controller;
 use App\Http\Requests\Api\Cart\AddOrderApiRequest;
-
+use App\Services\FatoorahServices;
 use App\Services\OrderApiService;
 use Illuminate\Http\Request;
 
@@ -17,7 +17,6 @@ class OrderApiController extends Controller
         $service = new OrderApiService();
         return $service->create_order()->response();
     }
-
 
 
 }
