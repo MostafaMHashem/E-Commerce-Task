@@ -9,7 +9,8 @@
         <div class="mf-payment-methods-container">
             <div class="mf-danger-text">
                 {{-- {{$exMessage}} --}}
-                {{ request()->all() }}
+                {!! request()->all() !!}
+
             </div>
         </div>
     </body>
