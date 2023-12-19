@@ -1,11 +1,11 @@
 <?php
 
-namespace App\Http\Controllers\Api;
+namespace Fatoorahpayment\Gatewayintegration;
 
 use App\Http\Controllers\Controller;
-
-use App\Services\FatoorahServices;
-
+use App\Http\Requests\Api\Cart\AddOrderApiRequest;
+use Fatoorahpayment\Gatewayintegration\FatoorahServicesGateway;
+use App\Services\OrderApiService;
 use Illuminate\Http\Request;
 
 class MyFatoorahApiController extends Controller
@@ -18,7 +18,7 @@ class MyFatoorahApiController extends Controller
             "InvoiceAmount" =>  $request->InvoiceAmount,
             "CurrencyIso" => $request->CurrencyIso
         ];
-        $fatoorahServices = new FatoorahServices();
+        $fatoorahServices = new FatoorahServicesGateway();
         $response = $fatoorahServices->initial_data($data);
         return $response;
     }
@@ -57,7 +57,7 @@ class MyFatoorahApiController extends Controller
             //     }
             // ]
         ];
-        $fatoorahServices = new FatoorahServices();
+        $fatoorahServices = new FatoorahServicesGateway();
         $response = $fatoorahServices->execute_payment($request);
         return $response;
     }

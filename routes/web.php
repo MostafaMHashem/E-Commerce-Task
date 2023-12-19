@@ -4,6 +4,7 @@ use App\Http\Controllers\ButtonClickedController;
 use App\Http\Controllers\Dashboard\Auth\SignInDashboardController;
 use App\Http\Controllers\Dashboard\Auth\SignoutDashboardController;
 use App\Http\Controllers\Dashboard\OrderController;
+use Fatoorahpayment\Gatewayintegration\TestPackageClass;
 use Illuminate\Support\Facades\Route;
 
 /*
@@ -33,4 +34,11 @@ Route::prefix('admin')->middleware('auth:admin')->name('admin.')->group(function
         Route::get('orders', 'index')->name('index');
     });
 
+});
+
+
+Route::get('testPackage/{name}', function ($name) {
+    $greet = new TestPackageClass();
+
+    return $greet->test($name);
 });
