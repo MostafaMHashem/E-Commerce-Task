@@ -46,10 +46,5 @@ Route::controller(OrderApiController::class)->middleware('auth:api')->group(func
     Route::post('create_order', 'create_order');
 });
 
-Route::controller(MyFatoorahApiController::class)->group(function () {
-    Route::post('initial_data', 'initial_data');
-    Route::post('execute_payment', 'execute_payment');
-    Route::any('error', 'error_page')->name('api_error_page');
-    Route::any('success', 'sucess_page')->name('api_sucess_page');
-});
+
 
