@@ -60,7 +60,6 @@ class OrderApiService
             //response
             return new DataSuccess(
                 // route:
-                data: $order,
                 resourceData: orderResource::make($order),
                 message: "order created successfully successfully",
             );

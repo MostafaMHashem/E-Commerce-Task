@@ -6,11 +6,11 @@
     "license": "MIT",
     "require": {
         "php": "^8.1",
+        "fatoorahpayment/gatewayintegration": "^1.0",
         "guzzlehttp/guzzle": "^7.2",
         "laravel/framework": "^10.10",
         "laravel/sanctum": "^3.3",
         "laravel/tinker": "^2.8",
-        "myfatoorah/laravel-package": "^2.2",
         "pusher/pusher-php-server": "^7.2",
         "yajra/laravel-datatables": "^10.0"
     },

@@ -4,7 +4,7 @@
         "Read more about it at https://getcomposer.org/doc/01-basic-usage.md#installing-dependencies",
         "This file is @generated automatically"
     ],
-    "content-hash": "cbfd9fabd1742d86d960c7909f5fb677",
+    "content-hash": "c918609a23d1e653ade1c4fd214cabcd",
     "packages": [
         {
             "name": "brick/math",
@@ -63,26 +63,26 @@
         },
         {
             "name": "carbonphp/carbon-doctrine-types",
-            "version": "3.1.0",
+            "version": "2.1.0",
             "source": {
                 "type": "git",
                 "url": "https://github.com/CarbonPHP/carbon-doctrine-types.git",
-                "reference": "a31d3358a2a5d6ae947df1691d1f321418a5f3d5"
+                "reference": "99f76ffa36cce3b70a4a6abce41dba15ca2e84cb"
             },
             "dist": {
                 "type": "zip",
-                "url": "https://api.github.com/repos/CarbonPHP/carbon-doctrine-types/zipball/a31d3358a2a5d6ae947df1691d1f321418a5f3d5",
-                "reference": "a31d3358a2a5d6ae947df1691d1f321418a5f3d5",
+                "url": "https://api.github.com/repos/CarbonPHP/carbon-doctrine-types/zipball/99f76ffa36cce3b70a4a6abce41dba15ca2e84cb",
+                "reference": "99f76ffa36cce3b70a4a6abce41dba15ca2e84cb",
                 "shasum": ""
             },
             "require": {
-                "php": "^8.1"
+                "php": "^7.4 || ^8.0"
             },
             "conflict": {
-                "doctrine/dbal": "<4.0.0 || >=5.0.0"
+                "doctrine/dbal": "<3.7.0 || >=4.0.0"
             },
             "require-dev": {
-                "doctrine/dbal": "^4.0.0",
+                "doctrine/dbal": "^3.7.0",
                 "nesbot/carbon": "^2.71.0 || ^3.0.0",
                 "phpunit/phpunit": "^10.3"
             },
@@ -112,7 +112,7 @@
             ],
             "support": {
                 "issues": "https://github.com/CarbonPHP/carbon-doctrine-types/issues",
-                "source": "https://github.com/CarbonPHP/carbon-doctrine-types/tree/3.1.0"
+                "source": "https://github.com/CarbonPHP/carbon-doctrine-types/tree/2.1.0"
             },
             "funding": [
                 {
@@ -128,7 +128,7 @@
                     "type": "tidelift"
                 }
             ],
-            "time": "2023-12-10T15:33:53+00:00"
+            "time": "2023-12-11T17:09:12+00:00"
         },
         {
             "name": "dflydev/dot-access-data",
@@ -561,6 +561,63 @@
                 "source": "https://github.com/ezyang/htmlpurifier/tree/v4.17.0"
             },
             "time": "2023-11-17T15:01:25+00:00"
+        },
+        {
+            "name": "fatoorahpayment/gatewayintegration",
+            "version": "1.0.0",
+            "source": {
+                "type": "git",
+                "url": "https://github.com/crazyideaco/fatoorahPackage.git",
+                "reference": "44dccd32cc6886fc9abbfd92e2a695e2e7831f64"
+            },
+            "dist": {
+                "type": "zip",
+                "url": "https://api.github.com/repos/crazyideaco/fatoorahPackage/zipball/44dccd32cc6886fc9abbfd92e2a695e2e7831f64",
+                "reference": "44dccd32cc6886fc9abbfd92e2a695e2e7831f64",
+                "shasum": ""
+            },
+            "require": {
+                "illuminate/support": "*"
+            },
+            "require-dev": {
+                "illuminate/support": "*"
+            },
+            "type": "library",
+            "extra": {
+                "laravel": {
+                    "providers": [
+                        "Fatoorahpayment\\Gatewayintegration\\GatewayintegrationServiceProvider"
+                    ]
+                }
+            },
+            "autoload": {
+                "psr-4": {
+                    "Fatoorahpayment\\Gatewayintegration\\": "src/"
+                }
+            },
+            "notification-url": "https://packagist.org/downloads/",
+            "license": [
+                "MIT"
+            ],
+            "authors": [
+                {
+                    "name": "crazyideaco",
+                    "email": "crazyideacompany@gmail.com"
+                }
+            ],
+            "description": "package created for crazy idea company to handle the gateway integration for myfatoorah",
+            "homepage": "https://github.com/crazyideaco/fatoorahPackage",
+            "keywords": [
+                "fatoorah",
+                "gateway",
+                "laravel",
+                "payment"
+            ],
+            "support": {
+                "issues": "https://github.com/crazyideaco/fatoorahPackage/issues",
+                "source": "https://github.com/crazyideaco/fatoorahPackage/tree/v1.0.0"
+            },
+            "time": "2023-12-20T13:23:54+00:00"
         },
         {
             "name": "fruitcake/php-cors",
@@ -1108,16 +1165,16 @@
         },
         {
             "name": "laravel/framework",
-            "version": "v10.37.3",
+            "version": "v10.38.1",
             "source": {
                 "type": "git",
                 "url": "https://github.com/laravel/framework.git",
-                "reference": "996375dd61f8c6e4ac262b57ed485655d71fcbdc"
+                "reference": "ced4689f495213e9d23995b36098f12a802cc15b"
             },
             "dist": {
                 "type": "zip",
-                "url": "https://api.github.com/repos/laravel/framework/zipball/996375dd61f8c6e4ac262b57ed485655d71fcbdc",
-                "reference": "996375dd61f8c6e4ac262b57ed485655d71fcbdc",
+                "url": "https://api.github.com/repos/laravel/framework/zipball/ced4689f495213e9d23995b36098f12a802cc15b",
+                "reference": "ced4689f495213e9d23995b36098f12a802cc15b",
                 "shasum": ""
             },
             "require": {
@@ -1163,6 +1220,8 @@
                 "voku/portable-ascii": "^2.0"
             },
             "conflict": {
+                "carbonphp/carbon-doctrine-types": ">=3.0",
+                "doctrine/dbal": ">=4.0",
                 "tightenco/collect": "<5.5.33"
             },
             "provide": {
@@ -1274,6 +1333,7 @@
                 "files": [
                     "src/Illuminate/Collections/helpers.php",
                     "src/Illuminate/Events/functions.php",
+                    "src/Illuminate/Filesystem/functions.php",
                     "src/Illuminate/Foundation/helpers.php",
                     "src/Illuminate/Support/helpers.php"
                 ],
@@ -1306,7 +1366,7 @@
                 "issues": "https://github.com/laravel/framework/issues",
                 "source": "https://github.com/laravel/framework"
             },
-            "time": "2023-12-13T20:10:58+00:00"
+            "time": "2023-12-20T14:52:12+00:00"
         },
         {
             "name": "laravel/prompts",
@@ -2026,16 +2086,16 @@
         },
         {
             "name": "livewire/livewire",
-            "version": "v3.3.0",
+            "version": "v3.3.3",
             "source": {
                 "type": "git",
                 "url": "https://github.com/livewire/livewire.git",
-                "reference": "7c1f609515e74ef1197c08e56a5606571b3ec1d9"
+                "reference": "6dd3bec8c711cd792742be4620057637e261e6f7"
             },
             "dist": {
                 "type": "zip",
-                "url": "https://api.github.com/repos/livewire/livewire/zipball/7c1f609515e74ef1197c08e56a5606571b3ec1d9",
-                "reference": "7c1f609515e74ef1197c08e56a5606571b3ec1d9",
+                "url": "https://api.github.com/repos/livewire/livewire/zipball/6dd3bec8c711cd792742be4620057637e261e6f7",
+                "reference": "6dd3bec8c711cd792742be4620057637e261e6f7",
                 "shasum": ""
             },
             "require": {
@@ -2088,7 +2148,7 @@
             "description": "A front-end framework for Laravel.",
             "support": {
                 "issues": "https://github.com/livewire/livewire/issues",
-                "source": "https://github.com/livewire/livewire/tree/v3.3.0"
+                "source": "https://github.com/livewire/livewire/tree/v3.3.3"
             },
             "funding": [
                 {
@@ -2096,7 +2156,7 @@
                     "type": "github"
                 }
             ],
-            "time": "2023-12-11T18:04:00+00:00"
+            "time": "2023-12-20T05:34:05+00:00"
         },
         {
             "name": "maennchen/zipstream-php",
@@ -2386,129 +2446,6 @@
                 }
             ],
             "time": "2023-10-27T15:32:31+00:00"
-        },
-        {
-            "name": "myfatoorah/laravel-package",
-            "version": "2.2.4",
-            "source": {
-                "type": "git",
-                "url": "https://dev.azure.com/myfatoorahsc/Public-Repo/_git/Laravel-Package",
-                "reference": "4bb8ce82639c06697e04b701569d35e72a00f591"
-            },
-            "require": {
-                "myfatoorah/library": "~2.2.4"
-            },
-            "type": "library",
-            "extra": {
-                "laravel": {
-                    "providers": [
-                        "MyFatoorah\\LaravelPackage\\MyFatoorahServiceProvider"
-                    ]
-                }
-            },
-            "autoload": {
-                "psr-4": {
-                    "MyFatoorah\\LaravelPackage\\": "src"
-                }
-            },
-            "notification-url": "https://packagist.org/downloads/",
-            "license": [
-                "GPL-3.0-only"
-            ],
-            "authors": [
-                {
-                    "name": "MyFatoorah Plugin Team",
-                    "email": "plugins@myfatoorah.com"
-                },
-                {
-                    "name": "Nermeen Shoman",
-                    "email": "nshoman@myfatoorah.com",
-                    "role": "Senior Software Engineer"
-                },
-                {
-                    "name": "Rasha Saeed",
-                    "email": "rsaeed@myfatoorah.com",
-                    "role": "Senior Software Engineer"
-                }
-            ],
-            "description": "The official MyFatoorah Payment Gateway for Laravel.",
-            "homepage": "https://myfatoorah.com/",
-            "keywords": [
-                "My Fatoorah",
-                "api",
-                "commerce",
-                "fatoorah",
-                "gateway",
-                "laravel",
-                "myfatoorah",
-                "payment",
-                "shipping"
-            ],
-            "time": "2023-11-05T10:17:27+00:00"
-        },
-        {
-            "name": "myfatoorah/library",
-            "version": "2.2.4",
-            "source": {
-                "type": "git",
-                "url": "https://dev.azure.com/myfatoorahsc/Public-Repo/_git/Library",
-                "reference": "cbede323561cf3044a8e3cc7ddbe1d52388416b6"
-            },
-            "require": {
-                "ext-curl": "*",
-                "ext-json": "*",
-                "php": ">=7"
-            },
-            "require-dev": {
-                "phan/phan": "^5.4",
-                "phpcompatibility/php-compatibility": "*",
-                "phpstan/phpstan": "^1.10",
-                "phpunit/phpunit": "^9.5",
-                "squizlabs/php_codesniffer": "*"
-            },
-            "type": "library",
-            "autoload": {
-                "files": [
-                    "autoload.php"
-                ],
-                "psr-4": {
-                    "MyFatoorah\\Library\\": "src/"
-                }
-            },
-            "notification-url": "https://packagist.org/downloads/",
-            "license": [
-                "GPL-3.0-only"
-            ],
-            "authors": [
-                {
-                    "name": "MyFatoorah Plugin Team",
-                    "email": "plugins@myfatoorah.com"
-                },
-                {
-                    "name": "Nermeen Shoman",
-                    "email": "nshoman@myfatoorah.com",
-                    "role": "Senior Software Engineer"
-                },
-                {
-                    "name": "Rasha Saeed",
-                    "email": "rsaeed@myfatoorah.com",
-                    "role": "Senior Software Engineer"
-                }
-            ],
-            "description": "MyFatoorah PHP Library",
-            "homepage": "https://myfatoorah.com/",
-            "keywords": [
-                "My Fatoorah",
-                "api",
-                "commerce",
-                "fatoorah",
-                "gateway",
-                "library",
-                "myfatoorah",
-                "payment",
-                "shipping"
-            ],
-            "time": "2023-07-26T11:48:23+00:00"
         },
         {
             "name": "nesbot/carbon",
