@@ -9,6 +9,7 @@ use App\Response\DataStatus;
 use App\Response\DataFailed;
 use App\Response\DataSuccess;
 use Illuminate\Support\Facades\Hash;
+use Illuminate\Support\Str;
 
 class SignInApiService
 {
@@ -41,7 +42,7 @@ class SignInApiService
                     throw new \Exception("user is blocked, please contact with admin");
                 } else {
                     $user->update([
-                        'api_token' => Hash::make(rand(554, 41515515)),
+                        'api_token' =>  $user->createToken($data['device_name'] ?? ($user->user_devices->first()->device_name ?? Str::random(length: 60)))->plainTextToken,
                     ]);
 
                     //add device to user
@@ -52,7 +53,7 @@ class SignInApiService
                         'device_name' => $data['device_name'] ?? null,
                     ]);
                 }
-            }else{
+            } else {
                 throw new \Exception("invalid credentials");
             }
 

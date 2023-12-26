@@ -19,6 +19,10 @@ use Illuminate\Support\Facades\Route;
 */
 
 
+// Route::middleware('auth:sanctum')->get('/user', function (Request $request) {
+//     return $request->user();
+// });
+
 
 Route::prefix('admin')->middleware('guest:admin')->name('admin.')->group(function () {
     Route::controller(SignInDashboardController::class)->name('auth.')->group(function () {
@@ -37,8 +41,3 @@ Route::prefix('admin')->middleware('auth:admin')->name('admin.')->group(function
 });
 
 
-Route::get('testPackage/{name}', function ($name) {
-    $greet = new TestPackageClass();
-
-    return $greet->test($name);
-});

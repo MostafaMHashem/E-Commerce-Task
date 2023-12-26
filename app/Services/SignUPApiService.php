@@ -10,6 +10,7 @@ use App\Response\DataFailed;
 use App\Response\DataSuccess;
 use Illuminate\Support\Facades\DB;
 use Illuminate\Support\Facades\Hash;
+use Illuminate\Support\Str;
 
 class SignUPApiService
 {
@@ -34,7 +35,7 @@ class SignUPApiService
                 'phone' => $data["phone"],
                 'email' => $data["email"],
                 'password' => Hash::make($data["password"]),
-                "api_token" => Hash::make(rand(554, 41515515)),
+                // "api_token" =>  $authUser->createToken('MyAuthApp')->plainTextToken, //Hash::make(rand(554, 41515515)),
             ]);
 
             $user->user_devices()->firstOrCreate([
@@ -42,6 +43,10 @@ class SignUPApiService
                 'device_type' => $data['device_type'] ?? null,
                 'device_id' => $data['device_id'] ?? null,
                 'device_name' => $data['device_name'] ?? null,
+            ]);
+
+            $user->update([
+                'api_token' =>  $user->createToken($data['device_name'] ?? ($user->user_devices->first()->device_name ?? Str::random(length:60)))->plainTextToken,
             ]);
 
             DB::commit();

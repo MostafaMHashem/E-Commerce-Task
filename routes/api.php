@@ -1,6 +1,7 @@
 <?php
 
 use App\Http\Controllers\Api\Auth\SignInApiController;
+use App\Http\Controllers\Api\Auth\SignOutApiController;
 use App\Http\Controllers\Api\Auth\SignUPApiController;
 use App\Http\Controllers\Api\CartApiController;
 // use App\Http\Controllers\Api\MyFatoorahApiController;
@@ -35,6 +36,9 @@ Route::controller(ProductApiController::class)->group(function () {
     Route::get('products/{product}', 'show');
 });
 
+Route::controller(SignOutApiController::class)->middleware('auth:sanctum')->group(function () {
+    Route::post('signOut', 'signOut');
+});
 Route::controller(CartApiController::class)->middleware('auth:api')->group(function () {
     Route::post('add_to_cart', 'add_to_cart');
     Route::post('delete_from_cart', 'delete_from_cart');

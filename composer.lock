@@ -4,7 +4,7 @@
         "Read more about it at https://getcomposer.org/doc/01-basic-usage.md#installing-dependencies",
         "This file is @generated automatically"
     ],
-    "content-hash": "c918609a23d1e653ade1c4fd214cabcd",
+    "content-hash": "18b3ffdf12a63cb032088f1f7149d62e",
     "packages": [
         {
             "name": "brick/math",
@@ -564,16 +564,16 @@
         },
         {
             "name": "fatoorahpayment/gatewayintegration",
-            "version": "1.0.5",
+            "version": "1.0.9",
             "source": {
                 "type": "git",
                 "url": "https://github.com/crazyideaco/fatoorahPackage.git",
-                "reference": "c0ceda54ace446b3e03becd8e1dcd6132b507235"
+                "reference": "96cddcb32949f335dacc098104f5b65d5e10eead"
             },
             "dist": {
                 "type": "zip",
-                "url": "https://api.github.com/repos/crazyideaco/fatoorahPackage/zipball/c0ceda54ace446b3e03becd8e1dcd6132b507235",
-                "reference": "c0ceda54ace446b3e03becd8e1dcd6132b507235",
+                "url": "https://api.github.com/repos/crazyideaco/fatoorahPackage/zipball/96cddcb32949f335dacc098104f5b65d5e10eead",
+                "reference": "96cddcb32949f335dacc098104f5b65d5e10eead",
                 "shasum": ""
             },
             "require": {
@@ -619,9 +619,9 @@
             ],
             "support": {
                 "issues": "https://github.com/crazyideaco/fatoorahPackage/issues",
-                "source": "https://github.com/crazyideaco/fatoorahPackage/tree/v1.0.5"
+                "source": "https://github.com/crazyideaco/fatoorahPackage/tree/v1.0.9"
             },
-            "time": "2023-12-24T12:23:13+00:00"
+            "time": "2023-12-24T14:08:12+00:00"
         },
         {
             "name": "fruitcake/php-cors",
