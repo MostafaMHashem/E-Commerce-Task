@@ -16,12 +16,12 @@
 {{--                </div>--}}
 
                 <div class="img">
-                    <img src="{{ auth('admin')->user()->image_link }}" alt="person">
+                    {{-- <img src="{{ auth('admin')->user()->image_link }}" alt="person"> --}}
                 </div>
                 <div class="btn-group">
                     <button class="btn  btn-sm dropdown-toggle" type="button" data-bs-toggle="dropdown"
                         aria-expanded="false">
-                        {{ auth('admin')->user()->name }}
+                        {{ auth('admin')->user()->name ?? ''}}
                     </button>
                     <ul class="dropdown-menu">
                         {{-- <li> <a href="{{ route('admin.settings.create') }}">اعدادات الحساب</a> </li> --}}

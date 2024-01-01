@@ -7,6 +7,7 @@ use App\Http\Controllers\Api\CartApiController;
 // use App\Http\Controllers\Api\MyFatoorahApiController;
 use App\Http\Controllers\Api\OrderApiController;
 use App\Http\Controllers\Api\ProductApiController;
+use App\Http\Controllers\Api\WhatsappController;
 use Fatoorahpayment\Gatewayintegration\MyFatoorahApiController;
 use Illuminate\Http\Request;
 use Illuminate\Support\Facades\Route;
@@ -49,6 +50,8 @@ Route::controller(CartApiController::class)->middleware('auth:api')->group(funct
 Route::controller(OrderApiController::class)->middleware('auth:api')->group(function () {
     Route::post('create_order', 'create_order');
 });
-
+Route::controller(WhatsappController::class)->group(function () {
+    Route::get('screenshot_session_api', 'screenshot_session_api');
+});
 
 
