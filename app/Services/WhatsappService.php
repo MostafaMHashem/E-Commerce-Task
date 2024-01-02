@@ -8,7 +8,7 @@ use Illuminate\Support\Facades\Http;
 
 class WhatsappService
 {
-    protected $apiService;
+
 
     public function screenshot_session()
     {
